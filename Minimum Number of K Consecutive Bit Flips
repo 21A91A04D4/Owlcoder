@@ -1,0 +1,24 @@
+def min_k_bit_flips(nums, k):
+    n = len(nums)
+    flips = 0
+
+    for i in range(n - k + 1):
+        if nums[i] == 0:
+            flips += 1
+            for j in range(i, i + k):
+                nums[j] = 1 if nums[j] == 0 else 0
+
+    for i in range(n - k + 1, n):
+        if nums[i] == 0:
+            return -1
+
+    return flips
+
+# Input
+n = int(input())
+nums = list(map(int, input().split()))
+k = int(input())
+
+# Output
+result = min_k_bit_flips(nums, k)
+print(result)
